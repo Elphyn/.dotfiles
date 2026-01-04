@@ -14,3 +14,11 @@ PS1='[\u@\h \W]\$ '
 
 eval "$(starship init bash)"
 export PATH=$PATH:/usr/local/go/bin
+
+alias zapret-config='$HOME/zapret-configs/install.sh'
+alias zapret-utils='$HOME/zapret-configs/utils-zapret.sh'
+alias zapret-utils='$HOME/zapret-configs/utils-zapret.sh'
+alias zapret-utils='$HOME/zapret-configs/utils-zapret.sh'
+
+alias ls='eza -l --icons --git'
+alias la='eza -la --icons --git'
