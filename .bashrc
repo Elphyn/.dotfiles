@@ -22,3 +22,5 @@ alias zapret-utils='$HOME/zapret-configs/utils-zapret.sh'
 
 alias ls='eza -l --icons --git'
 alias la='eza -la --icons --git'
+
+alias tas='tmux attach-session -t'
