@@ -1,0 +1,5 @@
+* About
+
+Collection of dotfiles, managed by GNU Stow
+
+No longer updating nvim and bash config
