@@ -1,4 +1,5 @@
 monitor=eDP-1,2560x1440@165, 0x0, 1.6
+monitor=HDMI-A-1,3840x2160@30,2560x0,1
 # monitor=eDP-1,2560x1440@165, 0x0, 2
 $terminal = alacritty
 $browser = zen-browser 
@@ -10,6 +11,7 @@ $ipc = qs -c noctalia-shell ipc call
 # exec-once = hyprpaper
 exec-once = /usr/bin/emacs --daemon
 exec-once = qs -c noctalia-shell --no-duplicate
+exec-once = easyeffects --gapplication-service
 
 # clipboard 
 exec-once = wl-paste --type text --watch cliphist store 
@@ -17,7 +19,7 @@ exec-once = wl-paste --type image --watch cliphist store
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
-
+env = WLR_DRM_DEVICES,/dev/dri/card1  # point to whichever card is Nvidia
 
 general {
     gaps_in = 2
@@ -223,11 +225,15 @@ bind = SUPER SHIFT, L, exec, $ipc sessionMenu toggle
 bind = SUPER SHIFT, K, exec, $ipc calendar toggle
 bind = SUPER SHIFT, P, exec, $ipc powerProfile cycle
 
+# Emacs
+bind = SUPER, N, exec, $editor
+bind = SUPER, Y, exec, emacsclient --eval '(thanos/type)'
+# windowrulev2 = float,class:^(emacs)$,title:^(emacs-float)$ # Launch as a floating window.
+
 
 bind = SUPER SHIFT, Z, exec, systemctl
 bind = SUPER, RETURN, exec, $terminal
 # bind = SUPER, N, exec, alacritty -e nvim
-bind = SUPER, N, exec, $editor
 bind = SUPER, Q, killactive,
 bind = SUPER, T, exec, sh ~/dotfiles/scripts/tmux-rofi.sh
 # bind = SUPER, M, exit,
@@ -338,3 +344,15 @@ xwayland {
 
 # source = /home/vlad/.config/hypr/noctalia/noctalia-colors.conf
 
+
+# Steam UI: fake fullscreen
+# windowrule = match:class ^(steam)$, fullscreen_state 0 2
+
+# # Steam popups: float
+# windowrule = match:class ^(steam)$, match:title ^(Steam)$, float on
+
+# # Games: true fullscreen on dedicated workspace
+# windowrule = match:class ^(steam_app_.*)$, fullscreen on
+# windowrule = match:class ^(steam_app_.*)$, workspace name:gaming silent
+
+bind = SUPER, G, workspace, name:gaming
