@@ -28,18 +28,18 @@ hl.bind(mainMod .. "+ Z", hl.dsp.exec_cmd(browser))
 for i = 1, 9 do
 	hl.bind(mainMod .. "+ " .. i, hl.dsp.focus({ workspace = i }))
 end
+hl.bind(mainMod .. "+ G", hl.dsp.focus({ workspace = 10 }))
 
 for i = 1, 9 do
 	hl.bind(mainMod .. "+ SHIFT + " .. i, hl.dsp.window.move({ workspace = i, follow = true }))
 end
-
 hl.bind(mainMod .. "+ SHIFT + G", hl.dsp.window.move({ workspace = 10, follow = true }))
-hl.bind(mainMod .. "+ G", hl.dsp.focus({ workspace = 10 }))
 
 -- Windows
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 hl.bind(mainMod .. "+ Q", hl.dsp.window.close())
 hl.bind(mainMod .. "+ SHIFT + Q", hl.dsp.window.kill())
 hl.bind(mainMod .. "+ V", hl.dsp.window.float())
-hl.bind(mainMod .. "+ SHIFT + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. "+ mouse:272", hl.dsp.window.drag())
 hl.bind(mainMod .. "+ mouse:273", hl.dsp.window.resize())
